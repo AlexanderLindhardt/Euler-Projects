@@ -1,0 +1,20 @@
+
+package euler2;
+
+public class Euler2 {
+
+    public static void main(String[] args) {
+        int a1 = 1;
+        int sum = 2;
+        int a2 = 2;
+        for (int a3 = 3; a3 <= 4000000; a3 = a2+ a1) {
+            if(a3 % 2 == 0)
+                sum = a3 + sum;
+            a1 = a2;
+            a2 = a3;
+            
+        }
+        System.out.println(sum);
+    }
+    
+}
