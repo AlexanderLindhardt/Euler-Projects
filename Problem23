@@ -1,0 +1,35 @@
+package euler;
+
+public class euler23 {
+
+	public static void main(String[] args) {
+		int[] abun = new int[6965];
+		int idx = 0;
+		for (int i = 2; i <= 28123; i++) {
+			if (isAb(i)) {
+				abun[idx] = i;
+				idx++;
+			}
+		}
+		boolean[] abunSum = new boolean[28124];
+		for (int i = 0; i < abun.length; i++) {
+			for (int j = i; j < abun.length; j++) {
+				if (abun[i]+abun[j] <= 28123) {
+					abunSum[abun[i]+abun[j]] = true;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		int temp = 0;
+		for (int i = 0; i < abunSum.length; i++) {
+			if(!abunSum[i]) temp=temp+i;
+		}
+		System.out.println(temp);
+	}
+	public static boolean isAb(int n) {
+		if (euler21.d(n)>n) return true;
+		return false;
+	}
+}
