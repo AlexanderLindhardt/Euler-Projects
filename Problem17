@@ -1,0 +1,45 @@
+package euler;
+
+public class euler21 {
+
+	public static void main(String[] args) {
+
+			int temp = 0;
+			int N=10000;
+			for (int i = 2; i < N; i = i + 2) {
+				for (int j = i; j < N; j = j + 2) {
+					if (amic(i, j)) {
+						temp = temp + i + j;
+						System.out.println(temp);
+					}
+				}
+			}
+		}
+	
+	public static int d(int n) {
+		int res = 1;
+		for (int i = 2; i <= Math.sqrt(n); i++) {
+			if (i * i == n) {
+				if(n % i ==0) res = i + res;
+			}
+			else {
+				if(n % i ==0) res = i + res + n/i;
+			}
+			}
+		
+		return res;
+	}
+	public static boolean amic(int a, int b) {
+		if	(a == b) {
+			return false;
+		}
+		else {
+			if (d(a) == b && a == d(b)) return true;
+		}
+		return false;
+	}
+
+
+	}
+
+
