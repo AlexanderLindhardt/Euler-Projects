@@ -1,0 +1,37 @@
+package eulerProblem;
+
+public class euler14 {
+
+	public static void main(String[] args) {
+		long temp1 = 1L;
+		long k = 0L;
+		for (Long i = 5L; i < 1000000; i++) {
+			k = i;
+			long temp2 = 1L;
+			while(k != 1) {
+				if (k % 2 == 0) {
+					k = evenCalc(k);
+					temp2 = temp2 + 1;
+				}
+				else {
+					k = oddCalc(k);
+					temp2 = temp2 + 1;
+				}
+			}
+			if (temp2 > temp1) {
+				temp1 = temp2;
+				System.out.println(i);
+			}
+		}
+		
+		System.out.println(temp1);
+
+	}
+	public static long evenCalc(long n) {
+		return n/2;
+	}
+	public static long oddCalc(long n) {
+		return 3*n+1;
+	}
+
+}
