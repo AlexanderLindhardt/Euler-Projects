@@ -4,28 +4,31 @@ package euler;
 public class euler19 {
 
 	public static void main(String[] args) {
-		int dagar = 0;
-		int månad = 0;
+		int days = 0;
+		int months = 0;
+		
 		for (int i = 1900; i < 2001 ; i++) {
 			if(i % 4 == 0 && i % 100 !=0 || i % 400 ==0) {
-				dagar += 1;
+				days += 1;
 			}
-			dagar += 365;
+			days += 365;
 		}
+		
 		for (int i = 1900; i < 2001; i++) {
-			månad += 12;
+			months += 12;
 		}
 		
-		boolean [] sun = new boolean[dagar-1];
-		boolean [] first = new boolean [dagar-1];
-		int[] m = new int[månad];
+		boolean [] sun = new boolean[days-1]; // Will be true when its a Sunday
+		boolean [] first = new boolean [days-1]; // Will be true when its the first day of the month
+		int[] m = new int[months]; // The amount of days for month i
 		
-		for (int j = 6; j < dagar-1; j += 7) {
+		for (int j = 6; j < days-1; j += 7) {
 				sun[j] = true;
 		}
+		
 		int k;
 		int s;
-		for (int i = 0; i < månad; i++) {
+		for (int i = 0; i < months; i++) {
 			k = i % 12;
 			s = i / 12;
 			
@@ -41,23 +44,26 @@ public class euler19 {
 			
 			else m[i] = 28;
 		}
+		
 		int ind = 0;
 		int c = 0;
-		while (c < månad) {
+		while (c < months) {
 				first[ind] = true;
 				ind += m[c];
 				c++;
 
-			}
-		int antal = 0;
-		for (int i = 0; i < dagar-1; i++) {
+		}
+		
+		int count = 0;
+		for (int i = 0; i < days-1; i++) {
 			if (first[i] == true && sun[i]==true) {
-				antal += 1;
+				count += 1;
 			}
 			
 		}
+		
 		// Minus 2 since i also add the first Sunday in year 1900 too. (I used google for this) 
-		System.out.println(antal-2);
+		System.out.println(count-2);
 			
 		}
 			
