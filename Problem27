@@ -1,0 +1,33 @@
+package euler;
+
+public class euler27 {
+
+	public static void main(String[] args) {
+		int n;
+		int tracka = 0;
+		int trackb = 0;
+		int counter = 0;
+		for (int a = -999; a < 1000; a++) {
+			for (int b = -1000; b <= 1000; b++) {
+				n=0;	
+				while (isPrime(n*n+a*n+b)) {
+					if (n > counter)  {
+						counter = n;
+						tracka = a;
+						trackb = b;
+					}
+					n++;
+				}
+			}		
+		}
+		System.out.println(tracka*trackb);
+	}
+	public static boolean isPrime(long n) {
+		if (n == 1) return false;
+		for (int i = 2; i <= Math.sqrt(Math.abs(n)); i++) {
+			if (n % i == 0) return false;
+		}
+		return true;
+	}
+
+}
